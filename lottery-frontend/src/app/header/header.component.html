@@ -1,0 +1,19 @@
+<div class="container">
+  <div
+    *ngIf="(loggedInUserName$ | async) != 'NOT LOGGED IN'"
+    class="row justify-content-end">
+
+    <div class="col-2">
+      <div>User: {{loggedInUserName$ | async}}</div>
+    </div>
+
+    <div class="col-2">
+      <button
+        (click)="logout()"
+        class="btn btn-danger">
+        Logout
+      </button>
+    </div>
+
+  </div>
+</div>

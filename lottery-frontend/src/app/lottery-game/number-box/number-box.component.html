@@ -1,0 +1,17 @@
+<div
+  class="number-wrapper">
+
+  <div
+    (click)="onClick()"
+    class="number">
+    {{boxState.theNumber}}
+  </div>
+
+  <div
+    (click)="onClick()"
+    *ngIf="boxState.checked"
+    class="cross-through">
+    X
+  </div>
+
+</div>

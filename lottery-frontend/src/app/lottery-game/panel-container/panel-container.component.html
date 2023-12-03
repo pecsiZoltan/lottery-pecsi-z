@@ -1,0 +1,27 @@
+<div
+  class="page-wrapper container">
+  <div class="panel-wrapper">
+    <app-panel
+      *ngFor="let id of ids"
+      [height]="height"
+      [numbersDrawn]="numbersDrawn"
+      [panelId]="id"
+      [width]="width">
+    </app-panel>
+  </div>
+
+  <div
+    class="button-container">
+    <button
+      (click)="onPlay()"
+      class="play-button"
+      type="button">
+      Play
+    </button>
+  </div>
+
+  <app-panel-status
+    *ngIf="showStatus"
+    [statusMessages]="statusMessages">
+  </app-panel-status>
+</div>

@@ -1,0 +1,43 @@
+.box-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel {
+  padding: 10px;
+  margin: 5px;
+  overflow-x: auto;
+}
+
+.random-button, .del-button {
+  cursor: pointer;
+  border: none;
+  width: 76px;
+  height: 38px;
+}
+
+.del-button {
+  background: url("../../../assets/del.png") no-repeat;
+  float: right;
+}
+
+.del-button:hover {
+  background: red url("../../../assets/del_white.png") no-repeat;
+}
+
+.random-button {
+  background: url("../../../assets/rnd.png") no-repeat;
+}
+
+.random-button:hover {
+  background: red url("../../../assets/rnd_white.png") no-repeat;
+}
+
+.background-number {
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 1000;
+  color: #c0c0c0;
+  position: absolute;
+  z-index: -1;
+}

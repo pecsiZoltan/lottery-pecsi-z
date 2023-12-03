@@ -1,0 +1,72 @@
+<div
+  class="container container-sm">
+  <div
+    class="row justify-content-center">
+    <div
+      class="col-auto">
+
+      <form [formGroup]="gameForm">
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="panels">
+            Number of panels
+          </label>
+          <input
+            class="form-control"
+            formControlName="panels"
+            id="panels"
+            type="number">
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="rows">
+            Number of rows in a panel
+          </label>
+          <input
+            class="form-control"
+            formControlName="rows"
+            id="rows"
+            type="number">
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="columns">
+            Number of columns in a panel
+          </label>
+          <input
+            class="form-control"
+            formControlName="columns"
+            id="columns"
+            type="number">
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="numbersDrawn">
+            Numbers drawn in the game
+          </label>
+          <input
+            class="form-control"
+            formControlName="numbersDrawn"
+            id="numbersDrawn"
+            type="number">
+        </div>
+
+        <button
+          (click)="onSubmit()"
+          class="btn btn-danger"
+          type="button">
+          Submit
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>

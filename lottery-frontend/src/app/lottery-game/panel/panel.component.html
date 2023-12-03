@@ -1,0 +1,36 @@
+<div
+  [ngStyle]="{'width': getWidth()}"
+  class="panel">
+  <div>
+    <button
+      (click)="randomize()"
+      class="random-button"
+      type="button">
+    </button>
+    <button
+      (click)="clear()"
+      class="del-button"
+      type="button">
+    </button>
+  </div>
+  <br>
+  <div
+    class="box-wrapper">
+    <!--    TODO refact: calculate these before and bind variables instead of method calls -->
+    <div
+      [ngStyle]="{'font-size': getFontSize(), 'width': getBackgroundWidth(), 'line-height': getBackgroundHeight()}"
+      class="background-number">
+      {{panelId}}
+    </div>
+    <div
+      *ngFor="let row of boxes, let i = index">
+      <div
+        *ngFor="let box of row, let j = index">
+        <app-number-box
+          [boxState]="boxes[i][j]">
+        </app-number-box>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

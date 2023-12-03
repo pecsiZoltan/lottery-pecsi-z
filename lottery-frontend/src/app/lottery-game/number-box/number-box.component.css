@@ -1,0 +1,34 @@
+.number-wrapper {
+  display: grid;
+}
+
+.number, .cross-through {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  grid-area: 1 / 1;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.number {
+  border: 2px solid red;
+  color: red;
+  font-weight: bold;
+}
+
+.cross-through {
+  border: 2px solid red;
+  color: black;
+  font-size: x-large;
+}
+
+.number:hover, .cross-through:hover {
+  background-color: red;
+  color: white;
+}
+
