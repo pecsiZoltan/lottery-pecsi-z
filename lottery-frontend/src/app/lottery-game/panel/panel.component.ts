@@ -16,6 +16,11 @@ export class PanelComponent implements OnInit, OnChanges {
   @Input() width!: number;
   @Input() numbersDrawn!: number;
 
+  public boxContainerWidth!: string;
+  public boxContainerBackgroundWidth!: string;
+  public boxContainerBackgroundHeight!: string;
+  public boxContainerBackgroundFontSize!: string;
+
   boxes: NumberBoxState[][] = [];
 
   constructor(private panelStatusService: PanelStatusService) {
@@ -24,6 +29,7 @@ export class PanelComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     //TODO remove log
     console.log('Panel OnCanges')
+    this.calculateBoxContainerSize();
     this.initBoxes();
   }
 
@@ -76,6 +82,13 @@ export class PanelComponent implements OnInit, OnChanges {
   getFontSize(): string {
     let smallerSide: number = this.width < this.height ? this.width : this.height;
     return `${smallerSide * 38}px`
+  }
+
+  private calculateBoxContainerSize() {
+    this.boxContainerWidth = this.getWidth();
+    this.boxContainerBackgroundWidth = this.getBackgroundWidth();
+    this.boxContainerBackgroundHeight = this.getBackgroundHeight();
+    this.boxContainerBackgroundFontSize = this.getFontSize();
   }
 
   private initBoxes(): void {

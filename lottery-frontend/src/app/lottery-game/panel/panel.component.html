@@ -1,5 +1,5 @@
 <div
-  [ngStyle]="{'width': getWidth()}"
+  [ngStyle]="{'width': boxContainerWidth}"
   class="panel">
   <div>
     <button
@@ -16,9 +16,8 @@
   <br>
   <div
     class="box-wrapper">
-    <!--    TODO refact: calculate these before and bind variables instead of method calls -->
     <div
-      [ngStyle]="{'font-size': getFontSize(), 'width': getBackgroundWidth(), 'line-height': getBackgroundHeight()}"
+      [ngStyle]="{'font-size': boxContainerBackgroundFontSize, 'width': boxContainerBackgroundWidth, 'line-height': boxContainerBackgroundHeight}"
       class="background-number">
       {{panelId}}
     </div>
