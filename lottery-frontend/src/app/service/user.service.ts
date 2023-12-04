@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-import {Observable, of} from "rxjs";
-import {User, UserListItem} from "../store/state/user";
+import {Observable} from "rxjs";
+import {UserListItem} from "../store/state/user";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

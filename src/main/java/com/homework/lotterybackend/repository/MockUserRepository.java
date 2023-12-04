@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 public class MockUserRepository {
 
-    private List<LotteryUser> users = List.of(
+    private final List<LotteryUser> users = List.of(
             LotteryUser.builder()
                     .id(1L)
                     .name("Adam")
@@ -54,14 +54,6 @@ public class MockUserRepository {
 
     public List<UserListItem> findAllforLoginList() {
         return users.stream().map(UserListItem::new).toList();
-    }
-
-    public UserDto findById(Long id) {
-        return users.stream()
-                .filter(lotteryUser -> lotteryUser.getId().equals(id))
-                .map(UserDto::new)
-                .findFirst()
-                .orElseThrow();
     }
 
     public UserDto findByName(String name) {
