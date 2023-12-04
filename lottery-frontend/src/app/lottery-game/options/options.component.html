@@ -59,6 +59,13 @@
             type="number">
         </div>
 
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="gameForm.invalid">
+          All provided values must be positive (i.e. at least 1)!
+        </div>
+
         <button
           (click)="onSubmit()"
           class="btn btn-danger"
