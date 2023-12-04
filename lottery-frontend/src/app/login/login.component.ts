@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   ) {
   }
 
+  showErrorMessage: boolean = false;
+
   ngOnInit(): void {
 
     this.userList$ = this.store.select(selectUserList);
@@ -52,18 +54,26 @@ export class LoginComponent implements OnInit {
       password: [''],
     })
 
+    this.loginService.me().subscribe(
+      user => this.store.dispatch(logUserIn({user: user}))
+    )
+
   }
 
   login(): void {
-    this.loginService.login(this.loginForm.value).subscribe(
-      user => {
+    this.loginService.login(this.loginForm.value).subscribe({
+      next: user => {
         this.store.dispatch(
           logUserIn({user: user}
           )
         );
         this.router.navigate(["/game"]);
+      },
+      error: () => {
+        console.log('login error')
+        this.showErrorMessage = true
       }
-    )
+    })
   }
 
   onIdChange(): void {

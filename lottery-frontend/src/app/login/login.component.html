@@ -56,6 +56,13 @@
             type="password">
         </div>
 
+        <div
+          *ngIf="showErrorMessage"
+          class="alert alert-danger"
+          role="alert">
+          Login Attempt Failed!
+        </div>
+
         <button
           (click)="login()"
           class="btn btn-danger"
