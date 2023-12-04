@@ -5,10 +5,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {StoreModule} from '@ngrx/store';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {userReducer} from "./store/reducer/user.reducers";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HeaderComponent} from './header/header.component';
+import {HttpRequestInterceptor} from "./interceptor/httpInterceptor";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import {HeaderComponent} from './header/header.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
