@@ -1,6 +1,7 @@
 package com.homework.lotterybackend.config;
 
 import com.homework.lotterybackend.repository.MockUserRepository;
+import com.homework.lotterybackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,7 @@ public class SecurityConfig {
     @Value("${cors-policies}")
     private String[] corsPolicies;
 
-    private final MockUserRepository repository;
+    private final UserRepository repository;
 
     public SecurityConfig(MockUserRepository repository) {
         this.repository = repository;
@@ -52,7 +53,6 @@ public class SecurityConfig {
                 .csrf().disable()
                 .cors()
                 .and().authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET, "/api/users/me").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/users").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()

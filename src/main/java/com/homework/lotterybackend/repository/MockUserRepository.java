@@ -4,14 +4,12 @@ import com.homework.lotterybackend.domain.LotteryRole;
 import com.homework.lotterybackend.domain.LotteryUser;
 import com.homework.lotterybackend.domain.UserDto;
 import com.homework.lotterybackend.domain.UserListItem;
-import lombok.Getter;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-@Getter
-public class MockUserRepository {
+public class MockUserRepository implements UserRepository {
 
     private final List<LotteryUser> users = List.of(
             LotteryUser.builder()
@@ -64,5 +62,7 @@ public class MockUserRepository {
                 .orElseThrow();
     }
 
-
+    public List<LotteryUser> getUsers() {
+        return users;
+    }
 }
