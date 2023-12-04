@@ -15,7 +15,6 @@ export class LoginService {
   }
 
   login(loginData: LoginData): Observable<User> {
-    console.log(loginData);
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(loginData.userName + ':' + loginData.password),
     });
