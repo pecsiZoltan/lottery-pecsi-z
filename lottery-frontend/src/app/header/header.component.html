@@ -14,8 +14,8 @@
     <div class="col-3"
       *ngIf="showPlayButton$ | async">
       <button
-        (click)="play()"
-        class="btn btn-danger">
+        class="btn btn-danger"
+        routerLink="/game">
         Play
       </button>
     </div>

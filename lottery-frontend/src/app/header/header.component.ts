@@ -38,14 +38,10 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.loginService.logout().subscribe(
       () => {
-        console.log('next');
         this.store.dispatch(logUserOut());
         this.router.navigate(['login']);
       }
     )
   }
 
-  play() {
-    this.router.navigate(['game']);
-  }
 }
