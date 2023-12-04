@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {User} from "../state/user";
+import {User, UserListItem} from "../state/user";
 
 export const logUserIn = createAction(
   '[User Auth] Save',
@@ -11,6 +11,6 @@ export const logUserOut = createAction(
 
 export const storeUserList = createAction(
   '[User List] Save',
-  props<{ users: User[] }>()
+  props<{ users: UserListItem[] }>()
 )
 

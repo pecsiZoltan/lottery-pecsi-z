@@ -1,34 +1,20 @@
 import {Injectable} from "@angular/core";
 import {Observable, of} from "rxjs";
-import {User} from "../store/state/user";
+import {User, UserListItem} from "../store/state/user";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
   }
 
-  getUsers(): Observable<User[]> {
-    return of([
-        {
-          id: 1,
-          name: 'Béla',
-          role: 'PLAYER'
-        },
-        {
-          id: 2,
-          name: 'Géza',
-          role: 'PLAYER'
-        },
-        {
-          id: 3,
-          name: 'Klárika',
-          role: 'PLAYER'
-        }
-      ]
-    )
+  getUsers(): Observable<UserListItem[]> {
+    return this.http.get<UserListItem[]>('http://localhost:8080/api/users');
   }
 
 }

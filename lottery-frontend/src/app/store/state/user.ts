@@ -4,9 +4,14 @@ export interface User {
   role: 'PLAYER' | 'GUEST' | null
 }
 
+export interface UserListItem {
+  id: number | null,
+  name: string | null,
+}
+
 export interface UserState {
   loggedInUser: User,
-  users: User[]
+  users: UserListItem[]
 }
 
 export const dummyUser: User = {

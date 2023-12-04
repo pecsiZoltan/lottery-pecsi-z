@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {logUserIn, storeUserList} from "../store/action/user.actions";
 import {selectUserById, selectUserByName, selectUserList} from "../store/selector/user.selector";
-import {User, UserState} from "../store/state/user";
+import {UserListItem, UserState} from "../store/state/user";
 import {UserService} from "../service/user.service";
 import {Observable} from "rxjs";
 import {FormBuilder, FormGroup} from "@angular/forms";
@@ -16,7 +16,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  userList$!: Observable<User[]>;
+  userList$!: Observable<UserListItem[]>;
 
   loginForm!: FormGroup;
 
@@ -34,13 +34,16 @@ export class LoginComponent implements OnInit {
     this.userList$ = this.store.select(selectUserList);
 
     this.userService.getUsers().subscribe(
-      users => this.store.dispatch(
-        storeUserList(
-          {
-            users: users
-          }
+      users => {
+        console.log(users);
+        this.store.dispatch(
+          storeUserList(
+            {
+              users: users
+            }
+          )
         )
-      )
+      }
     );
 
     this.loginForm = this.formBuilder.group({
