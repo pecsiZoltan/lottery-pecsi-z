@@ -22,9 +22,8 @@ export class LoginService {
     return this.http.get<User>('http://localhost:8080/api/users/me', {headers: headers})
   }
 
-  logout(): Observable<string> {
-    console.log('logout service');
-    return of('');
+  logout(): Observable<void> {
+    return this.http.get<void>('http://localhost:8080/api/logout');
   }
 
   me(): Observable<User> {

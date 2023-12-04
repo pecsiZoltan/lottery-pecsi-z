@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private store: Store<UserState>,
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
   ) {
   }
 
