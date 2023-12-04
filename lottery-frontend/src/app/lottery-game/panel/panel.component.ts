@@ -27,8 +27,6 @@ export class PanelComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //TODO remove log
-    console.log('Panel OnCanges')
     this.calculateBoxContainerSize();
     this.initBoxes();
   }

@@ -24,8 +24,6 @@ export class PanelContainerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    //TODO remove log
-    console.log('Container OnChanges');
     this.ids = [];
     for (let i = 1; i <= this.numberOfPanels; i++) {
       this.ids.push(i);
