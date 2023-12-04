@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
 
     this.userService.getUsers().subscribe(
       users => {
-        console.log(users);
         this.store.dispatch(
           storeUserList(
             {
