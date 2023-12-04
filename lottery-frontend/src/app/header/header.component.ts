@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {UserState} from "../store/state/user";
-import {Observable} from "rxjs";
-import {selectName} from "../store/selector/user.selector";
+import {map, Observable} from "rxjs";
+import {selectName, selectRole} from "../store/selector/user.selector";
 import {LoginService} from "../service/login.service";
 import {logUserOut} from "../store/action/user.actions";
 import {Router} from "@angular/router";
@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
 
   loggedInUserName$!: Observable<String | null>;
 
+  showPlayButton$!: Observable<boolean | null>;
+
   constructor(
     private store: Store<UserState>,
     private loginService: LoginService,
@@ -25,6 +27,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedInUserName$ = this.store.select(selectName);
+    this.showPlayButton$ = this.store.select(selectRole)
+      .pipe(
+        map(
+          role => role === 'PLAYER'
+        )
+      )
   }
 
   logout(): void {
@@ -37,4 +45,7 @@ export class HeaderComponent implements OnInit {
     )
   }
 
+  play() {
+    this.router.navigate(['game']);
+  }
 }

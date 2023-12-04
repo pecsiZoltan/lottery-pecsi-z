@@ -1,10 +1,19 @@
-<div class="container">
+<div class="container header">
   <div
     *ngIf="(loggedInUserName$ | async) != 'NOT LOGGED IN'"
     class="row justify-content-end">
 
     <div class="col-2">
       <div>User: {{loggedInUserName$ | async}}</div>
+    </div>
+
+    <div class="col-2"
+      *ngIf="showPlayButton$ | async">
+      <button
+        (click)="play()"
+        class="btn btn-danger">
+        Play
+      </button>
     </div>
 
     <div class="col-2">
