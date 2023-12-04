@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   ) {
   }
 
-  showForm: boolean = true;
   showErrorMessage: boolean = false;
 
   ngOnInit(): void {
@@ -55,10 +54,7 @@ export class LoginComponent implements OnInit {
     })
 
     this.loginService.me().subscribe(
-      user => {
-        this.store.dispatch(logUserIn({user: user}));
-        this.showForm = false
-      }
+      user => this.store.dispatch(logUserIn({user: user}))
     )
 
   }
