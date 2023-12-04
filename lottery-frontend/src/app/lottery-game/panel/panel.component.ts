@@ -54,7 +54,13 @@ export class PanelComponent implements OnInit, OnChanges {
 
     this.clear();
 
-    for (let i = 0; i < this.numbersDrawn; i++) {
+    for (
+      let i = 0;
+      i < (this.numbersDrawn < this.width * this.height
+        ? this.numbersDrawn
+        : this.width * this.height);
+      i++)
+    {
       let randomChecked = false;
       while (!randomChecked) {
         let y = Math.floor((Math.random() * this.height));
@@ -116,7 +122,9 @@ export class PanelComponent implements OnInit, OnChanges {
 
     let status: PanelStatus = {id: this.panelId, status: ''};
 
-    if (checkedNumbers.length === 0) {
+    if (this.numbersDrawn > this.height * this.width) {
+      status.status = 'Invalid config: more numbers to choose than available!';
+    } else if (checkedNumbers.length === 0) {
       status.status = 'empty';
     } else if (checkedNumbers.length === this.numbersDrawn) {
       status.status = checkedNumbers.toString();
